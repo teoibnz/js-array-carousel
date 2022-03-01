@@ -1,0 +1,16 @@
+.my-thumbnails{
+    height: 20%;
+}
+
+#carousel-container{
+    width: 80%;
+    height: 500px;
+   
+    margin-top: 100px
+}
+
+div#main-img,
+div#thumbnails-img{
+    height: 100%;
+}
+
