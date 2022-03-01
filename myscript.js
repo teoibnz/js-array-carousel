@@ -47,10 +47,10 @@ console.log(mainImageElement);
 
 const downButton = document.getElementById('down-button');
 
-
-// downButton.addEventListener('click', function(){
-    
-//         mainImageWrapper.classList.add("d-inline");
-//         console.log(mainImageWrapper)
-// });
+let activeElement = [0];
+downButton.addEventListener('click', function(){
+    mainImageElement[activeElement].classList.remove('d-inline');
+    activeElement++;
+    mainImageElement[activeElement].classList.add('d-inline');
+});
 
