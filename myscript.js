@@ -27,7 +27,7 @@ const text = [
 
 let carouselContent = '';
 
-for ( i= 0; i > items.length; i++){
+for ( i = 0; i < items.length; i++){
     carouselContent += `
     <div class="main-img-wrapper d-none">
         <img id="main-img-element" src="${items[i]}" alt="">
@@ -38,10 +38,10 @@ const mainImage = document.getElementById('main-img');
 
 mainImage.innerHTML += carouselContent;
 
-const mainImageElement = document.getElementsByClassName('main-img-wrapper');
+let carouselElement = document.getElementsByClassName('main-img-wrapper');
 
-mainImageElement[0].classList.add('d-inline')
-console.log(mainImageElement);
+carouselElement[0].classList.add('d-inline');
+console.log(carouselElement);
 
 
 
@@ -49,8 +49,8 @@ const downButton = document.getElementById('down-button');
 
 let activeElement = [0];
 downButton.addEventListener('click', function(){
-    mainImageElement[activeElement].classList.remove('d-inline');
+    carouselElement[activeElement].classList.add('d-none');
     activeElement++;
-    mainImageElement[activeElement].classList.add('d-inline');
+    carouselElement[activeElement].classList.remove('d-inline');
 });
 
