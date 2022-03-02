@@ -29,7 +29,7 @@ let carouselContent = '';
 
 for ( i = 0; i < items.length; i++){
     carouselContent += `
-    <div class="main-img-wrapper d-none">
+    <div id="img-element d-none">
         <img id="main-img-element" src="${items[i]}" alt="">
     </div>`
 };
@@ -38,9 +38,9 @@ const mainImage = document.getElementById('main-img');
 
 mainImage.innerHTML += carouselContent;
 
-let carouselElement = document.getElementsByClassName('main-img-wrapper');
+let carouselElement = document.getElementById('main-img-wrapper');
 
-carouselElement[0].classList.add('d-inline');
+carouselElement[0].classList.add('d-block');
 console.log(carouselElement);
 
 
@@ -51,6 +51,6 @@ let activeElement = [0];
 downButton.addEventListener('click', function(){
     carouselElement[activeElement].classList.add('d-none');
     activeElement++;
-    carouselElement[activeElement].classList.remove('d-inline');
+    carouselElement[activeElement].classList.add('d-block');
 });
 
