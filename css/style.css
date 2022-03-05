@@ -3,14 +3,30 @@
     opacity: 70%;
 }
 
+.clicked{
+    opacity: 100%;
+}
+
+.anclicked{
+    opacity: 70%;
+
+}
 
 .main-img-wrapper{
     width: 100%;
     height: 100%;
 }
 
+.main-img-wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-#main-img-element,
+.active{
+    display: inline-block;
+}
+
 #thumbnails-img-element{
     width: 100%;
     height: 100%;

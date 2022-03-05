@@ -22,35 +22,42 @@ const text = [
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
 ]
 
-// let thumbnailsWrapper = document.getElementById('thumbnails-img')
+let thumbnailsWrapper = document.querySelector('#thumbnails-img');
+
+let mainImage = document.getElementById('main-img')
+
+function createNewSquare (){
+    let newBox = document.createElement('div');
+    return newBox;
+}
 
 
-let carouselContent = '';
+const next = document.getElementById('down-button');
 
-for ( i = 0; i < items.length; i++){
-    carouselContent += `
-    <div id="img-element d-none">
-        <img id="main-img-element" src="${items[i]}" alt="">
-    </div>`
+let activeElement = 1;
+
+for (let i = 0; i < items.length; i++) {
+    let addedBox = createNewSquare();
+    mainImage.appendChild(addedBox);
+    addedBox.classList.add('main-img-wrapper', 'd-none')
+    addedBox.innerHTML += `<img src=${items[i]}>` ;
+
+    let addedThumbBox = createNewSquare();
+    thumbnailsWrapper.appendChild(addedThumbBox);
+    addedThumbBox.classList.add('my-thumbnails')
+    addedThumbBox.innerHTML += `<img id="thumbnails-img-element" src=${items[i]} alt="">` ; 
 };
 
-const mainImage = document.getElementById('main-img');
-
-mainImage.innerHTML += carouselContent;
-
-let carouselElement = document.getElementById('main-img-wrapper');
-
-carouselElement[0].classList.add('d-block');
-console.log(carouselElement);
+next.addEventListener('click', function (){
+    document.getElementsByClassName('main-img-wrapper')[activeElement].classList.remove('d-none')
 
 
+    if( activeElement === items.length - 1){
+        activeElement = 0;
+    } else {
+        activeElement++;
+    }
 
-const downButton = document.getElementById('down-button');
-
-let activeElement = [0];
-downButton.addEventListener('click', function(){
-    carouselElement[activeElement].classList.add('d-none');
-    activeElement++;
-    carouselElement[activeElement].classList.add('d-block');
-});
-
+    document.getElementsByClassName('my-thumbnails')[activeElement].classList.add('clicked');
+    
+})
