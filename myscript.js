@@ -33,13 +33,14 @@ function createNewSquare (){
 
 
 const next = document.getElementById('down-button');
-
+const prev = document.getElementById('up-button');
 let activeElement = 1;
+
 
 for (let i = 0; i < items.length; i++) {
     let addedBox = createNewSquare();
     mainImage.appendChild(addedBox);
-    addedBox.classList.add('main-img-wrapper', 'd-none')
+    addedBox.classList.add('main-img-wrapper')
     addedBox.innerHTML += `<img src=${items[i]}>` ;
 
     let addedThumbBox = createNewSquare();
@@ -48,8 +49,27 @@ for (let i = 0; i < items.length; i++) {
     addedThumbBox.innerHTML += `<img id="thumbnails-img-element" src=${items[i]} alt="">` ; 
 };
 
+
+prev.addEventListener('click', function (){
+    document.getElementsByClassName('main-img-wrapper')[activeElement].classList.remove('active')
+    document.getElementsByClassName('my-thumbnails')[activeElement].classList.remove('clicked');
+
+
+    if( activeElement === 0){
+        activeElement = items.length - 1;
+    } else {
+        activeElement--;
+    }
+
+    document.getElementsByClassName('main-img-wrapper')[activeElement].classList.add('active')
+    document.getElementsByClassName('my-thumbnails')[activeElement].classList.add('clicked');
+    
+})
+
+
 next.addEventListener('click', function (){
-    document.getElementsByClassName('main-img-wrapper')[activeElement].classList.remove('d-none')
+    document.getElementsByClassName('main-img-wrapper')[activeElement].classList.remove('active')
+    document.getElementsByClassName('my-thumbnails')[activeElement].classList.remove('clicked');
 
 
     if( activeElement === items.length - 1){
@@ -57,7 +77,9 @@ next.addEventListener('click', function (){
     } else {
         activeElement++;
     }
-
+    document.getElementsByClassName('main-img-wrapper')[activeElement].classList.add('active')
     document.getElementsByClassName('my-thumbnails')[activeElement].classList.add('clicked');
     
 })
+
+
